@@ -1,0 +1,49 @@
+* {box-sizing: border-box}
+
+body {
+    background: #fff;
+    /* A4 paper */
+    width: 212mm;
+    margin: 0;
+    padding: 0;
+    overflow-x:hidden;
+}
+.page {
+    margin: -1px; /*hack to minimize edge artifacts between pages*/
+    width: calc(106mm + 1px);
+    height: calc(148mm);
+    background: #fff url("./background.svg") no-repeat center;
+    background-size: cover;
+    float: left;
+    position: relative;
+    overflow: visible;
+/*     outline: 1px dashed #fff; */
+}
+/* cutting helper */
+.page:after {
+    content: "+";
+    font-family: monospace;
+    font-size: 3mm;
+    line-height: 3mm;
+    display: block;
+    position: absolute;
+    bottom: -1mm;
+    right: -1mm;
+    z-index:3;
+    color: #249fab;
+}
+@media print {
+    .page {
+        outline: none;
+        border: none;
+    }
+}
+
+
+.breaker {
+    page-break-after: always;
+    width: 100%;
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
